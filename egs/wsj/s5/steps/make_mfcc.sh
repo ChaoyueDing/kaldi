@@ -59,7 +59,7 @@ mkdir -p $logdir || exit 1;
 if [ -f $data/feats.scp ]; then
   mkdir -p $data/.backup
   echo "$0: moving $data/feats.scp to $data/.backup"
-  mv $data/feats.scp $data/.backup
+  cp $data/feats.scp $data/.backup
 fi
 
 scp=$data/wav.scp
