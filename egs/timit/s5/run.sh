@@ -36,18 +36,18 @@ echo "                Data & Lexicon & Language Preparation                     
 echo ============================================================================
 
 #timit=/export/corpora5/LDC/LDC93S1/timit/TIMIT # @JHU
-timit=/mnt/matylda2/data/TIMIT/timit # @BUT
+# timit=/mnt/matylda2/data/TIMIT/timit # @BUT
+timit=`pwd`/data/TIMIT # relative path
 
 local/timit_data_prep.sh $timit || exit 1
 
-local/timit_prepare_dict.sh
+local/timit_prepare_dict.sh || exit 1
 
 # Caution below: we remove optional silence by setting "--sil-prob 0.0",
 # in TIMIT the silence appears also as a word in the dictionary and is scored.
 utils/prepare_lang.sh --sil-prob 0.0 --position-dependent-phones false --num-sil-states 3 \
  data/local/dict "sil" data/local/lang_tmp data/lang
-
-local/timit_format_data.sh
+local/timit_format_data.sh || exit 1
 
 echo ============================================================================
 echo "         MFCC Feature Extration & CMVN for Training and Test set          "
