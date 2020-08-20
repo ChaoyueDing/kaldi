@@ -71,7 +71,7 @@ for waves in ${train_sessions[@]} ; do
     spk=${tmp%/Sess*}
     mic=${waves#*wav_}
     echo "  $spk $ssn $mic"
-    gender=${spk:0:1}
+    gender=${spk:7:1}
     gender=${gender,,}
     for doc in $session/prompts/* ; do
         line=$(cat $doc)
