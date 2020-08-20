@@ -79,6 +79,7 @@ GSYMS
 /egs/*/*/data
 /egs/*/*/wav
 /egs/*/*/enhan
+/egs/yesno
 
 # /tools/
 /tools/pocolm/
